@@ -6,6 +6,6 @@ This project can assist users in identifying plants, including any possible illn
 ## Version History
 
 ## Authors
-Kelton Benson
-Nicholas Jones
-Timothy Bryant
+* Kelton Benson
+* Nicholas Jones
+* Timothy Bryant
