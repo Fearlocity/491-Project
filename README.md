@@ -3,6 +3,12 @@ This project can assist users in identifying plants, including any possible illn
 
 ## Installation and Running
 
+Download the latest version of cuda here:
+https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_local
+
+Run this line in your terminal to install all dependencies:
+pip3 install tensorflow tensorflow-gpu opencv-python matplotlib
+
 ## Version History
 
 ## Authors
