@@ -4,7 +4,7 @@ import cv2
 import imghdr
 
 # Change directory to where you are storing your images
-data_dir = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\images' 
+data_dir = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\flowers' 
 
 
 image_types = ['jpeg','jpg', 'bmp', 'png']
