@@ -5,7 +5,7 @@ import imghdr
 import numpy
 
 # Change directory to where you are storing your images
-data_dir = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\flowers' 
+data_dir = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\flowers' 
 
 
 #First we must ensure all files within the data set folders are the correct file types
