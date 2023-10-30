@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 20px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background-color: #7ac142;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-text">Loading...</div>
+    <div class="loading-bar">
+        <div class="loading-progress" id="loading-progress"></div>
+    </div>
+
+    <script>
+        function simulateLoading() {
+            const progressBar = document.getElementById("loading-progress");
+            let width = 0;
+            const interval = 50;
+            const step = 1;
+            const totalSteps = 100 / step;
+
+            function updateProgress() {
+                width += step;
+                progressBar.style.width = width + "%";
+                if (width >= 100) {
+                    clearInterval(loadingInterval);
+                    setTimeout(showImage, 2000);
+                }
+            }
+
+            const loadingInterval = setInterval(updateProgress, interval);
+        }
+
+        function showImage() {
+            const imageUrl = sessionStorage.getItem("uploadedImageName");
+            const imageElement = document.createElement("img");
+            imageElement.src = imageUrl;
+            imageElement.alt = "Uploaded Plant Image";
+            document.body.innerHTML = "";
+            document.body.appendChild(imageElement);
+        }
+
+        simulateLoading();
+    </script>
+</body>
+</html>

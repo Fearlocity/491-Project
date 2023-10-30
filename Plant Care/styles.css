@@ -49,6 +49,30 @@ p {
     margin-top: 20px;
 }
 
+.upload-button {
+    text-align: center;
+}
+
+.upload-label {
+    display: block;
+    padding: 80px 60px; /* Adjust the padding for width and height */
+    font-size: 18px;
+    background-color: #7ac142;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px; /* Adjust the value to control the roundness */
+    transition: opacity 0.3s;
+}
+
+.upload-label:hover {
+    opacity: 0.8;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 .option {
     text-align: center;
 }
@@ -60,6 +84,7 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    border-radius: 15px; /* Adjust the value to control the roundness */
     transition: background-color 0.3s;
 }
 
