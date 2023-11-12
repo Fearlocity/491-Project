@@ -1,4 +1,9 @@
 import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+import keras_preprocessing
+from keras_preprocessing import image
+from keras_preprocessing.image import ImageDataGenerator
 import numpy as np
 from matplotlib import pyplot as plt
 import os
@@ -15,24 +20,42 @@ if gpus:
 
 # Load Data
 
-training_data = tf.keras.preprocessing.image_dataset_from_directory('flowers')
-np_iterator = training_data.as_numpy_iterator()
-image_batch = np_iterator.next()
+training_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\flowers' 
+validation_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\validation_images' 
 
-# Normalize the data to a min/max of 0-1 instead of 0-255
-# as this makes the analyzer more efficient
-scaled_batch = image_batch[0] / 255
+training_datagen = ImageDataGenerator(rescale = 1./255)
 
-training_data = training_data.map(lambda x, y: (x/255, y))
-batch = training_data.as_numpy_iterator().next()
+train_generator = training_datagen.flow_from_directory(
+  training_data,
+  target_size=(150,150),
+  class_mode='categorical'
+)
 
-print(len(training_data))
-train_size = int(len(training_data)*.7)
-val_size = int(len(training_data)*.2)+1
-test_size = int(len(training_data)*.1)+1
 
-train = training_data.take(train_size)
-val = training_data.skip(train_size).take(val_size)
-test = training_data.skip(train_size+val_size).take(test_size)
 
-print(len(test))
+model = Sequential()
+# First Convolution
+model.add(Conv2D(64, (3,3), activation='relu', input_shape=(150,150,3)))
+model.add(MaxPooling2D(2, 2))
+# Second Convolution
+model.add(Conv2D(64, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Third Convolution
+model.add(Conv2D(128, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Fourth Convolution
+model.add(Conv2D(128, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Flatten the results
+model.add(Flatten())
+# 512 neuron hidden layer
+model.add(Dense(512, activation='relu'))
+model.add(Dense(2, activation='softmax')) # This will increase as we add more flowers
+
+model.compile(
+  loss = 'categorical_crossentropy',
+  optimizer='rmsprop',
+  metrics=['accuracy'])
+
+
+model.save("flowers.h5")
