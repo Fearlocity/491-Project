@@ -1,2 +1,2 @@
-node_modules
-.env
+Image_Analyzer/flowers/
+Image_Analyzer/validation_images/
