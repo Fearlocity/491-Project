@@ -32,7 +32,7 @@ for folders in os.listdir(data_dir):
         with open(os.path.join(data_dir, folders, image), 'rb') as f:
             check_chars = f.read()[-2:]
         if check_chars != b'\xff\xd9':
-            print('Not complete image' + image)
+            print('Not complete image: ' + image)
             temp = os.path.join(data_dir, folders, image)
             os.remove(temp)
         else:
