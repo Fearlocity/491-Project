@@ -20,8 +20,8 @@ if gpus:
 
 # Load Data
 
-training_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\flowers' 
-validation_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\validation_images' 
+training_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\training_data' 
+validation_data = r'C:\Users\Kelton2\Desktop\school stuff\cpsc 491\491-Project\Image_Analyzer\test_data' 
 
 training_datagen = ImageDataGenerator(
       rescale = 1./255,
@@ -68,12 +68,12 @@ model.add(Flatten())
 model.add(Dropout(0.5))
 # 512 neuron hidden layer
 model.add(Dense(512, activation='relu'))
-model.add(Dense(3, activation='softmax')) # This will increase as we add more flowers
+model.add(Dense(5, activation='softmax')) # This will increase as we add more flowers
 
 
 model.summary()
 
 model.compile(loss = 'categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
-history = model.fit(train_generator, epochs=8, steps_per_epoch=7, validation_data = validation_generator, verbose = 1, validation_steps=3)
+history = model.fit(train_generator, epochs=20, steps_per_epoch=15, validation_data = validation_generator, verbose = 1, validation_steps=3)
 model.save("flowers.keras")
