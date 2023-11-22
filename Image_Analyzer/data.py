@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 import keras_preprocessing
 from keras_preprocessing import image
 from keras_preprocessing.image import ImageDataGenerator
@@ -50,27 +50,25 @@ validation_generator = validation_datagen.flow_from_directory(
 
 
 
-model = tf.keras.models.Sequential([
-    # Note the input shape is the desired size of the image 150x150 with 3 bytes color
-    # This is the first convolution
-    tf.keras.layers.Conv2D(64, (3,3), activation='relu', input_shape=(150, 150, 3)),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    # The second convolution
-    tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2,2),
-    # The third convolution
-    tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2,2),
-    # The fourth convolution
-    tf.keras.layers.Conv2D(128, (3,3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2,2),
-    # Flatten the results to feed into a DNN
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dropout(0.5),
-    # 512 neuron hidden layer
-    tf.keras.layers.Dense(512, activation='relu'),
-    tf.keras.layers.Dense(3, activation='softmax') # This value corresponds to the number of flowers the model will support
-])
+model = Sequential()
+# First Convolution
+model.add(Conv2D(64, (3,3), activation='relu', input_shape=(150,150,3)))
+model.add(MaxPooling2D(2, 2))
+# Second Convolution
+model.add(Conv2D(64, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Third Convolution
+model.add(Conv2D(128, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Fourth Convolution
+model.add(Conv2D(128, (3,3), 1, activation='relu'))
+model.add(MaxPooling2D(2, 2))
+# Flatten the results
+model.add(Flatten())
+model.add(Dropout(0.5))
+# 512 neuron hidden layer
+model.add(Dense(512, activation='relu'))
+model.add(Dense(3, activation='softmax')) # This will increase as we add more flowers
 
 
 model.summary()
