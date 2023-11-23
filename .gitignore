@@ -1,2 +1,3 @@
-Image_Analyzer/test_data
-Image_Analyzer/training_data
+Image_Analyzer/test_data/
+Image_Analyzer/training_data/
+Image_Analyzer/flowers.keras

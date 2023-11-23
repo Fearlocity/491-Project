@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D, Dense, Flatten, Dropout
+import keras as k
 import keras_preprocessing
 from keras_preprocessing import image
 from keras_preprocessing.image import ImageDataGenerator
@@ -35,45 +36,41 @@ training_datagen = ImageDataGenerator(
 
 train_generator = training_datagen.flow_from_directory(
   training_data,
-  target_size=(150,150),
-  class_mode='categorical'
+  target_size=(224,224),
+  class_mode='categorical',
+  color_mode='rgb',
 )
 
 validation_datagen = ImageDataGenerator(rescale = 1./255)
 
 validation_generator = validation_datagen.flow_from_directory(
 	validation_data,
-	target_size=(150,150),
+	target_size=(224,224),
 	class_mode='categorical',
-  batch_size=126
+  color_mode='rgb',
+  batch_size=10
 )
 
+mobilenet = k.applications.mobilenet_v2.MobileNetV2(weights='imagenet', input_shape=(224,224,3), include_top=False)
+mobilenet.trainable = False
 
-
-model = Sequential()
+model = Sequential([mobilenet])
 # First Convolution
-model.add(Conv2D(64, (3,3), activation='relu', input_shape=(150,150,3)))
-model.add(MaxPooling2D(2, 2))
-# Second Convolution
-model.add(Conv2D(64, (3,3), 1, activation='relu'))
-model.add(MaxPooling2D(2, 2))
-# Third Convolution
-model.add(Conv2D(128, (3,3), 1, activation='relu'))
-model.add(MaxPooling2D(2, 2))
-# Fourth Convolution
-model.add(Conv2D(128, (3,3), 1, activation='relu'))
-model.add(MaxPooling2D(2, 2))
-# Flatten the results
-model.add(Flatten())
-model.add(Dropout(0.5))
-# 512 neuron hidden layer
-model.add(Dense(512, activation='relu'))
+model.add(GlobalAveragePooling2D())
+
+model.add(Dropout(0.4))
+model.add(Dense(256, activation='relu'))
+
+model.add(Dropout(0.3))
+model.add(Dense(128, activation='relu'))
+
+model.add(Dropout(0.2))
 model.add(Dense(5, activation='softmax')) # This will increase as we add more flowers
 
 
 model.summary()
 
-model.compile(loss = 'categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
 
-history = model.fit(train_generator, epochs=20, steps_per_epoch=15, validation_data = validation_generator, verbose = 1, validation_steps=3)
+model.fit(train_generator, epochs=40, steps_per_epoch=25, validation_data = validation_generator, verbose = 1, validation_steps=5)
 model.save("flowers.keras")
