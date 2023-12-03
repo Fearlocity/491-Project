@@ -34,7 +34,7 @@ app.post("/register", async (req, res) => {
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-      return res.status(400).json({ message: "Username already in use." });
+      return res.redirect('/register?registerError=Username already in use.');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -46,6 +46,7 @@ app.post("/register", async (req, res) => {
     res.status(201).sendFile(path.join(__dirname, '/Plant Care/login.html'))
   } catch (error) {
     console.error("Registration error:", error);
+    res.redirect('/register?registerError=An error occurred during registration.');
 
   }
 });
@@ -60,20 +61,29 @@ app.post("/login", async (req, res) => {
     user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password." });
+      return res.redirect('/login?loginError=Invalid username or password.');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid username or password." });
+      return res.redirect('/login?loginError=Invalid username or password.');
     }
     console.log("Login successful");
     res.status(201).sendFile(path.join(__dirname, '/Plant Care/index.html'))
   } catch (error) {
     console.error("Login error:", error);
+    res.redirect('/login?loginError=An error occurred during login.');
 
   }
+});
+
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, '/Plant Care/login.html'));
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '/Plant Care/login.html'));
 });
 
 const server = http.createServer(app);

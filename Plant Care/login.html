@@ -12,14 +12,16 @@
         <input type="text" id="login-username" name="username" placeholder="Username or Email" required>
         <input type="password" id="login-password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
+        <p id="login-error" style="color: red;"></p>
       </form>
     </div>
     <div class="information">
       <h2>Register</h2>
-      <form id="register" action="/register" method="post">
+      <form id="register" action="/register" method="post" onsubmit="saveRegisterError()">
         <input type="text" id="register-username" name="username" placeholder="Username or Email" required>
         <input type="password" id="register-password" name="password" placeholder="Password" required>
         <button type="submit">Register</button>
+        <p id="register-error" style="color: red;"></p>
       </form>
     </div>
   </div>
@@ -29,6 +31,23 @@
       // Save username to local storage
       localStorage.setItem('username', username);
       localStorage.setItem('isLoggedIn', 'true');
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginError = urlParams.get('loginError');
+    const registerError = urlParams.get('registerError');
+
+    // Display login error message if present
+    if (loginError) {
+      document.getElementById('login-error').innerText = loginError;
+    }
+
+    if (registerError) {
+      document.getElementById('register-error').innerText = registerError;
+    }
+
+    function saveRegisterError() {
+      // Clear previous register error message
+      document.getElementById('register-error').innerText = '';
     }
   </script>
 </body>
