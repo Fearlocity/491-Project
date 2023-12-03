@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require("./schemas/user");
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 require('dotenv').config()
 const uri = process.env.MONGO_URI;
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'Plant Care')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 // Connect to MongoDB using Mongoose
 mongoose
@@ -66,7 +68,6 @@ app.post("/login", async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid username or password." });
     }
-
     console.log("Login successful");
     res.status(201).sendFile(path.join(__dirname, '/Plant Care/index.html'))
   } catch (error) {

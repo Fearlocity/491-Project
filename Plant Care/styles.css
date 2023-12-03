@@ -91,3 +91,16 @@ button {
 button:hover {
     background-color: #5e9d30;
 }
+
+
+.login-button-box {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+#login-button {
+    float: right;
+}
+
