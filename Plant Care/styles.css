@@ -79,5 +79,25 @@ input[type="file"] {
     color: #fff;
 }
 
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #7ac142;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px; 
+    transition: background-color 0.3s;
+}
 
+.login-button-box {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+#login-button {
+    float: right;
+}
 

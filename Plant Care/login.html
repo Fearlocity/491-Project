@@ -2,9 +2,15 @@
 <html>
 <head>
   <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
+  <header class="header">
+    <div class="header-content">
+        <h1 class="app-name">Plant Care</h1>
+        <p class="slogan">Your Plant Care Assistant</p>
+    </div>
+  </header>
   <div class="container">
     <div class="information">
       <h2>Login</h2>
@@ -25,6 +31,9 @@
       </form>
     </div>
   </div>
+  <footer class="footer">
+    <p>&copy; 2023 Plant Care</p>
+</footer>
   <script>
     function saveUsername() {
       const username = document.getElementById('login-username').value;
