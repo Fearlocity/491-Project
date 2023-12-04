@@ -1,61 +1,41 @@
 body {
-    background-color: #e6ffcc;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
 }
 
-.plantcare-logo-box {
-    background-color: #333;
+.header {
+    background-color: #7ac142;
     color: #fff;
     text-align: center;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 20px 0;
 }
 
-.plantcare-logo {
+.app-name {
     font-size: 36px;
-    font-weight: bold;
-    color: #7ac142;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-.header-content {
-    max-width: 800px;
-    margin: 0 auto;
+.slogan {
+    font-size: 18px;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.upload-section {
     text-align: center;
-}
-
-h2 {
-    font-size: 24px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-.start-options {
-    display: flex;
-    justify-content: space-between;
-    max-width: 600px;
     margin-top: 20px;
 }
 
 .upload-button {
-    text-align: center;
+    display: inline-block;
 }
 
 .upload-label {
-    display: block;
-    padding: 80px 60px; /* Adjust the padding for width and height */
+    display: inline-block;
+    padding: 20px; /* Adjust the padding for size */
     font-size: 18px;
     background-color: #7ac142;
     color: #fff;
@@ -73,34 +53,28 @@ input[type="file"] {
     display: none;
 }
 
-.option {
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.feature {
     text-align: center;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 18px;
+.feature img {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%; /* Make images round if desired */
+    cursor: pointer;
+}
+.footer {
+    text-align: center;
+    padding: 10px 0;
     background-color: #7ac142;
     color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 15px; /* Adjust the value to control the roundness */
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #5e9d30;
 }
 
 
-.login-button-box {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-#login-button {
-    float: right;
-}
 

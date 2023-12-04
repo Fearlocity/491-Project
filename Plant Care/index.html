@@ -7,47 +7,52 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-button-box" id="loginButtonContainer">
-        <button id="login-button">Login</button>
-    </div>
-    <div class="plantcare-logo-box">
-        <h1 class="plantcare-logo">Plant Care</h1>
-    </div>
-    <header>
+    <header class="header">
         <div class="header-content">
-            <h2>Your Backyard Plant Assistant</h2>
-            <p>Identify, care for, and have the best plants for your backyard</p>
+            <h1 class="app-name">Plant Care</h1>
+            <p class="slogan">Your Plant Care Assistant</p>
         </div>
     </header>
-    <main>
-        <section class="upload-section">
-            <div class="upload-button">
-                <label for="image-upload" class="upload-label">Upload Plant Image</label>
-                <input type="file" id="image-upload" accept="image/*">
+
+    <main class="main-content">
+        <section class="features">
+            <div class="feature">
+                <a href="#" id="identify-link">
+                    <img src="\Plant Care\identify.png" alt="Identify Plant">
+                </a>
+                <p>Identify plants and check for illnesses</p>
             </div>
-        </section>
-        <section class="start-options">
-            <div class="options">
-                <div class="option">
-                    <button id="identify-button">IDENTIFY</button>
-                    <p>Identify plants and check for illnesses</p>
-                </div>
-                <div class="option">
-                    <button id="watering-button">REMINDERS</button>
-                    <p>Set watering reminders for your plants</p>
-                </div>
-                <div class="option">
-                    <button id="recommend-button">RECOMMEND</button>
-                    <p>Discover the best solutions for your plants</p>
-                </div>
+            <div class="feature">
+                <a href="#" id="watering-link">
+                    <img src="\Plant Care\watering.jpg" alt="Watering Reminders">
+                </a>
+                <p>Set watering reminders for your plants</p>
+            </div>
+            <div class="feature">
+                <a href="#" id="recommend-link">
+                    <img src="\Plant Care\reminders.jpg" alt="Recommend Solutions">
+                </a>
+                <p>Discover the best solutions for your plants</p>
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2023 Plant Care Assistant</p>
+
+    <footer class="footer">
+        <p>&copy; 2023 Plant Care</p>
     </footer>
+
+    <section class="upload-section">
+        <div class="upload-button">
+            <label for="image-upload" class="upload-label">Upload Plant Image</label>
+            <input type="file" id="image-upload" accept="image/*">
+        </div>
+    </section>
+    
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
 
 
