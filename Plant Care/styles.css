@@ -25,23 +25,25 @@ body {
 }
 
 .upload-section {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
     margin-top: 20px;
 }
 
 .upload-button {
-    display: inline-block;
+    
 }
 
 .upload-label {
-    display: inline-block;
-    padding: 20px; /* Adjust the padding for size */
+    padding: 20px; 
     font-size: 18px;
     background-color: #7ac142;
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 15px; /* Adjust the value to control the roundness */
+    border-radius: 15px;
     transition: opacity 0.3s;
 }
 
@@ -64,11 +66,12 @@ input[type="file"] {
 }
 
 .feature img {
-    width: 150px; /* Adjust the size as needed */
-    height: 150px; /* Adjust the size as needed */
-    border-radius: 50%; /* Make images round if desired */
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
     cursor: pointer;
 }
+
 .footer {
     text-align: center;
     padding: 10px 0;
