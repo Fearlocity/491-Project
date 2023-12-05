@@ -48,7 +48,7 @@ validation_generator = validation_datagen.flow_from_directory(
 	target_size=(224,224),
 	class_mode='categorical',
   color_mode='rgb',
-  batch_size=10
+  batch_size=25
 )
 
 mobilenet = k.applications.mobilenet_v2.MobileNetV2(weights='imagenet', input_shape=(224,224,3), include_top=False)
@@ -72,5 +72,5 @@ model.summary()
 
 model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
 
-model.fit(train_generator, epochs=40, steps_per_epoch=25, validation_data = validation_generator, verbose = 1, validation_steps=5)
+model.fit(train_generator, epochs=45, steps_per_epoch=25, validation_data = validation_generator, verbose = 1, validation_steps=5)
 model.save("flowers.keras")
