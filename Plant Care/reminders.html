@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Care - Reminders</title>
+    <link rel="stylesheet" href="styles/reminders.css">
+</head>
+<body>
+    <div class="login-button-box" id="loginButtonContainer">
+        <button id="login-button">Login</button>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="app-name">
+            <h1 class="app-name">Plant Care</h1>
+            </a>
+            <p class="slogan">Your Plant Care Assistant</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="reminders-section">
+            <div class="reminder">
+                <a href="rose.html" id="rose-link">
+                    <img src="images/rose.jpg" alt="Rose">
+                </a>
+                <p>Rose</p>
+            </div>
+            <div class="reminder">
+                <a href="dandelion.html" id="dandelion">
+                    <img src="images/dandelion.jpg" alt="Dandelion">
+                </a>
+                <p>Dandelion</p>
+            </div>
+            <div class="reminder">
+                <img src="images/tulip.jpg" alt="Tulip">
+                <p>Tulip</p>
+            </div>
+            <div class="reminder">
+                <img src="images/sunflower.jpg" alt="Sunflower">
+                <p>Sunflower</p>
+            </div>
+            <div class="reminder">
+                <img src="images/daisy.jpg" alt="Daisy">
+                <p>Daisy</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 Plant Care</p>
+    </footer>
+    
+    <script>
+        const titleClick = document.getElementsByClassName("app-name");
+
+        titleClick.addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

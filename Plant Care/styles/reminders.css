@@ -14,6 +14,8 @@ body {
 .app-name {
     font-size: 36px;
     margin-bottom: 5px;
+    color: #fff;
+    text-decoration: none !important; 
 }
 
 .slogan {
@@ -24,52 +26,29 @@ body {
     padding: 20px;
 }
 
-.upload-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; 
-    margin-top: 20px;
-}
-
-.upload-button {
-    
-}
-
-.upload-label {
-    padding: 20px; 
-    font-size: 18px;
-    background-color: #7ac142;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 15px;
-    transition: opacity 0.3s;
-}
-
-.upload-label:hover {
-    opacity: 0.8;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.features {
+.reminders-section {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.feature {
+.reminder {
     text-align: center;
+    margin: 10px;
 }
 
-.feature img {
-    width: 150px; 
-    height: 150px; 
-    border-radius: 50%; 
+.reminder img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     cursor: pointer;
+}
+
+.reminder p {
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .footer {
@@ -86,7 +65,7 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 15px; 
+    border-radius: 15px;
     transition: background-color 0.3s;
 }
 
@@ -97,6 +76,7 @@ button {
     width: 100%;
     box-sizing: border-box;
 }
+
 #login-button {
     float: right;
 }

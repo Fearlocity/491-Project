@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require("./schemas/user");
 const bcrypt = require('bcrypt');
+const { spawn } = require('child_process');
 
 require('dotenv').config()
 const uri = process.env.MONGO_URI;
@@ -80,6 +81,20 @@ app.get('/register', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, '/Plant Care/login.html'));
+});
+
+const childPython = spawn('python', ['Image_Analyzer/predict.py']);
+
+childPython.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+childPython.stderr.on('data', (data) => {
+  console.error(`stdout: ${data}`);
+});
+
+childPython.on('close', (code) => {
+  console.log(`child process exited with code ${code}`)
 });
 
 const server = http.createServer(app);
