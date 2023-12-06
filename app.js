@@ -83,7 +83,10 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, '/Plant Care/login.html'));
 });
 
-const childPython = spawn('python', ['Image_Analyzer/predict.py']);
+
+const command = `conda run -n ts python Image_Analyzer/predict.py`;
+
+const childPython = spawn(command, {shell: true});
 
 childPython.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);

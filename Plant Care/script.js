@@ -6,13 +6,13 @@ uploadInput.addEventListener("change", function () {
     }
 });
 
-const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
 
       // Select the login button container
       const loginButtonContainer = document.getElementById('loginButtonContainer');
 
       if (isLoggedIn) {
-        const username = localStorage.getItem('username');
+        const username = sessionStorage.getItem('username');
         // If the user is logged in, change the button to "Logout"
         loginButtonContainer.innerHTML = `
         <div style="float: right; margin-right: 20px;">
@@ -30,8 +30,8 @@ const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
       // Function to handle logout
       function logout() {
         // Clear login state from local storage
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('username');
+        sessionStorageStorage.removeItem('isLoggedIn');
+        sessionStorageStorage.removeItem('username');
         // Redirect to the login page
         window.location.href = 'login.html';
       }
