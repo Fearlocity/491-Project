@@ -48,6 +48,7 @@
     // Display login error message if present
     if (loginError) {
       document.getElementById('login-error').innerText = loginError;
+      localStorage.setItem('isLoggedIn', 'false');
     }
 
     if (registerError) {

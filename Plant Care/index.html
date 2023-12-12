@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Care Assistant</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.9/push.min.js"></script>
 </head>
 <body>
     <div class="login-button-box" id="loginButtonContainer">
@@ -28,7 +29,7 @@
             </div>
             <div class="feature">
                 <a href="#" id="watering-link">
-                    <img src="images/watering.jpg" alt="Watering Reminders">
+                    <img src="images/watering.jpg" alt="Watering Reminders" onclick="openTimePopup()">
                 </a>
                 <p>Set watering reminders for your plants</p>
             </div>
