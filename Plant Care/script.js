@@ -69,7 +69,7 @@ function openTimePopup() {
 
         // Trigger a scheduled push notification
         Push.create("Plant Care Assistant", {
-            body: "This is a scheduled notification.",
+            body: "Time To Water Your Plants.",
             icon: "images/watering.jpg",
             onClick: function () {
                 window.focus();
@@ -78,7 +78,7 @@ function openTimePopup() {
         });
       }, timeout);
     } else {
-      alert("Invalid time format. Please use HH:mm format.");
+      alert("Invalid time format. Please use HH:mm format in military time.");
     }
   }
 }
