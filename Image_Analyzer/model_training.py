@@ -55,7 +55,7 @@ mobilenet = k.applications.mobilenet_v2.MobileNetV2(weights='imagenet', input_sh
 mobilenet.trainable = False
 
 model = Sequential([mobilenet])
-# First Convolution
+
 model.add(GlobalAveragePooling2D())
 
 model.add(Dropout(0.4))
@@ -70,7 +70,7 @@ model.add(Dense(5, activation='softmax')) # This will increase as we add more fl
 
 model.summary()
 
-model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
+model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit(train_generator, epochs=45, steps_per_epoch=25, validation_data = validation_generator, verbose = 1, validation_steps=5)
 model.save("flowers.keras")
